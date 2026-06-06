@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="SurveySystem.controller.DataCollectionController"
+
+            prefWidth="900" prefHeight="600">
+
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Label text="问卷回答管理" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <HBox spacing="15" alignment="CENTER_LEFT">
+
+                <Label text="选择问卷："/>
+                <ComboBox fx:id="questionnaireCombo" prefWidth="300" promptText="请选择要查看的问卷"/>
+                <Button text="开始收集" onAction="#handleStartCollection"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                <Button text="查看回答" onAction="#handleViewResponses"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                <Button text="导出数据" onAction="#handleExportData"
+                        style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+            </HBox>
+            <Separator/>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="responseTable" prefWidth="900" prefHeight="400">
+            <columns>
+                <TableColumn fx:id="reidColumn" text="Response ID" />
+                <TableColumn fx:id="ridColumn" text="回答ID" prefWidth="80"/>
+                <TableColumn fx:id="userIdColumn" text="用户ID" prefWidth="80"/>
+                <TableColumn fx:id="startTimeColumn" text="开始时间" prefWidth="150"/>
+                <TableColumn fx:id="submitTimeColumn" text="提交时间" prefWidth="150"/>
+                <TableColumn fx:id="completedColumn" text="是否完成" prefWidth="100"/>
+                <TableColumn fx:id="actionColumn" text="操作" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Button fx:id="backButton" text="返回首页" onAction="#handleBack"
+                    style="-fx-background-color: #9E9E9E; -fx-text-fill: white;"/>
+            <Label fx:id="statisticLabel" text="统计信息：共 0 份回答，完成率 0%"/>
+        </HBox>
+    </bottom>
+</BorderPane>

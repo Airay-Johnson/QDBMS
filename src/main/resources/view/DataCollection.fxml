@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="SurveySystem.controller.DataCollectionController"
+      style="-fx-background-color: #f0f2f5; -fx-padding: 20;">
+
+    <!-- 页面标题 -->
+    <Label text="📊 数据收集管理" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <!-- 问卷选择区 -->
+    <VBox spacing="10"
+          style="-fx-background-color: white; -fx-padding: 15;
+                 -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 5, 0, 0, 2);">
+        <Label text="选择问卷：" style="-fx-font-size: 14px; -fx-text-fill: #555;"/>
+        <ComboBox fx:id="questionnaireCombo" promptText="请选择要查看的问卷" prefWidth="500"/>
+    </VBox>
+
+    <!-- 统计信息区 -->
+    <HBox spacing="15">
+        <!-- 总响应数 -->
+        <VBox style="-fx-background-color: white; -fx-padding: 15;
+                     -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 5, 0, 0, 2);
+                     -fx-min-width: 130;" alignment="CENTER">
+            <Label text="总响应数" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            <Label fx:id="totalResponsesLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+        </VBox>
+
+        <!-- 已完成数 -->
+        <VBox style="-fx-background-color: white; -fx-padding: 15;
+                     -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 5, 0, 0, 2);
+                     -fx-min-width: 130;" alignment="CENTER">
+            <Label text="已完成数" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            <Label fx:id="completedResponsesLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+        </VBox>
+
+        <!-- 完成率 -->
+        <VBox style="-fx-background-color: white; -fx-padding: 15;
+                     -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 5, 0, 0, 2);
+                     -fx-min-width: 130;" alignment="CENTER">
+            <Label text="完成率" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            <Label fx:id="completionRateLabel" text="0%" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #e67e22;"/>
+            <ProgressIndicator fx:id="completionIndicator" progress="0" prefWidth="60" prefHeight="60"/>
+        </VBox>
+
+        <!-- 问题数 -->
+        <VBox style="-fx-background-color: white; -fx-padding: 15;
+                     -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 5, 0, 0, 2);
+                     -fx-min-width: 130;" alignment="CENTER">
+            <Label text="问题数" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            <Label fx:id="totalQuestionsLabel" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #9b59b6;"/>
+        </VBox>
+    </HBox>
+
+    <!-- 响应列表 -->
+    <VBox spacing="10"
+          style="-fx-background-color: white; -fx-padding: 15;
+                 -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 5, 0, 0, 2);">
+        <Label text="响应记录列表" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <TableView fx:id="responseTable" prefHeight="280"
+                   style="-fx-control-inner-background: white;">
+            <columns>
+                <TableColumn fx:id="reidColumn" text="响应ID" prefWidth="80"/>
+                <TableColumn fx:id="ridColumn" text="受访者ID" prefWidth="100"/>
+                <TableColumn fx:id="completedColumn" text="完成状态" prefWidth="110"/>
+                <TableColumn fx:id="startTimeColumn" text="开始时间" prefWidth="150"/>
+                <TableColumn fx:id="endTimeColumn" text="结束时间" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- 操作按钮区 -->
+    <HBox spacing="10">
+        <Button text="开始收集数据" onAction="#handleStartCollection"
+                style="-fx-background-color: #3498db; -fx-text-fill: white;
+                       -fx-font-size: 13px; -fx-padding: 8 20; -fx-background-radius: 4;"/>
+        <Button text="刷新数据" onAction="#handleRefresh"
+                style="-fx-background-color: #f39c12; -fx-text-fill: white;
+                       -fx-font-size: 13px; -fx-padding: 8 20; -fx-background-radius: 4;"/>
+        <Button text="导出数据" onAction="#handleExportData"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                       -fx-font-size: 13px; -fx-padding: 8 20; -fx-background-radius: 4;"/>
+        <Button text="返回" onAction="#handleBack"
+                style="-fx-background-color: #ecf0f1; -fx-text-fill: #555;
+                       -fx-font-size: 13px; -fx-padding: 8 20; -fx-background-radius: 4;"/>
+    </HBox>
+
+</VBox>

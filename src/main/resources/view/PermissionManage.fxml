@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="SurveySystem.controller.PermissionManagementController">
+
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
+            <Label text="权限管理" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="管理用户、角色和权限分配" style="-fx-text-fill: #666;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="15" style="-fx-padding: 15;">
+            <!-- 左侧：用户列表 -->
+            <VBox spacing="10" prefWidth="250">
+                <Label text="用户列表" style="-fx-font-weight: bold;"/>
+                <TableView fx:id="userTable" prefHeight="400">
+                    <columns>
+                        <TableColumn text="用户名" prefWidth="120">
+                            <cellValueFactory><PropertyValueFactory property="username"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+                <Label text="选中用户的角色：" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="userRolesListView" prefHeight="100"/>
+                <HBox spacing="5">
+                    <Button text="分配角色" onAction="#handleAssignRoleToUser" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                    <Button text="移除角色" onAction="#handleRemoveRoleFromUser" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+
+            <!-- 中间：角色列表 -->
+            <VBox spacing="10" prefWidth="250">
+                <Label text="角色列表" style="-fx-font-weight: bold;"/>
+                <TableView fx:id="roleTable" prefHeight="400">
+                    <columns>
+                        <TableColumn text="角色名" prefWidth="120">
+                            <cellValueFactory><PropertyValueFactory property="roleName"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+                <Label text="选中角色的权限：" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="rolePermissionsListView" prefHeight="100"/>
+                <HBox spacing="5">
+                    <Button text="分配权限" onAction="#handleAssignPermissionToRole" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                    <Button text="移除权限" onAction="#handleRemovePermissionFromRole" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+
+            <!-- 右侧：权限列表 -->
+            <VBox spacing="10" prefWidth="250">
+                <Label text="权限列表" style="-fx-font-weight: bold;"/>
+                <TableView fx:id="permissionTable" prefHeight="500">
+                    <columns>
+                        <TableColumn text="权限名" prefWidth="120">
+                            <cellValueFactory><PropertyValueFactory property="name"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10;">
+            <Button text="关闭" onAction="#closeWindow" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

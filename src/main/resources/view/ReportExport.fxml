@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="SurveySystem.controller.ReportExportController"
+      spacing="10" style="-fx-background-color: #f4f4f4;">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label text="报告导出" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="选择问卷:"/>
+        <ComboBox fx:id="questionnaireCombo" prefWidth="250"/>
+        <Button text="加载数据" onAction="#handleLoadData"/>
+    </HBox>
+
+    <Label text="导出选项" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 0 5 0;"/>
+
+    <VBox spacing="5" style="-fx-padding: 0 0 0 20;">
+        <CheckBox text="包含基本统计信息" selected="true"/>
+        <CheckBox text="包含图表" selected="true"/>
+        <CheckBox text="包含原始数据"/>
+        <CheckBox text="包含交叉分析"/>
+    </VBox>
+
+    <Label text="导出格式" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 0 5 0;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <CheckBox text="PDF" selected="true"/>
+        <CheckBox text="Excel"/>
+        <CheckBox text="Word"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="预览报告" onAction="#handlePreview" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="导出报告" onAction="#handleExport" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="返回" onAction="#handleBack"/>
+    </HBox>
+</VBox>

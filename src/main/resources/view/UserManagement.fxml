@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="SurveySystem.controller.UserManagementController">
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #34495e; -fx-padding: 15;">
+            <Label text="用户管理" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </VBox>
+    </top>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <TableView fx:id="userTable" prefHeight="450">
+                <columns>
+                    <TableColumn text="ID" prefWidth="60"><cellValueFactory><PropertyValueFactory property="uid"/></cellValueFactory></TableColumn>
+                    <TableColumn text="用户名" prefWidth="150"><cellValueFactory><PropertyValueFactory property="username"/></cellValueFactory></TableColumn>
+                    <TableColumn text="邮箱" prefWidth="200"><cellValueFactory><PropertyValueFactory property="email"/></cellValueFactory></TableColumn>
+                </columns>
+            </TableView>
+            <HBox spacing="10">
+                <Button text="刷新" onAction="#handleRefresh" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                <Button text="禁用用户" onAction="#handleDisableUser" style="-fx-background-color: #e67e22; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10;">
+            <Button text="关闭" onAction="#handleBack" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

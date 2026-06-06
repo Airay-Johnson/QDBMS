@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # MySQL 数据库
+  mysql:
+    image: mysql:8.0
+    container_name: qdbms-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-123456}
+      MYSQL_DATABASE: qdbms
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+    ports:
+      - "3307:3306"  # 映射到 3307 避免与本地 MySQL 冲突
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./qdbms-server/src/main/resources/db/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-123456}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 40s
+
+  # Spring Boot 后端
+  server:
+    build:
+      context: ./qdbms-server
+      dockerfile: Dockerfile
+    container_name: qdbms-server
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/qdbms?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=Asia/Shanghai&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD:-123456}
+      JWT_SECRET: ${JWT_SECRET:-qdbms-jwt-secret-key-must-be-at-least-256-bits-long-for-hs256}
+    ports:
+      - "8080:8080"
+
+  # Vue 前端 + Nginx
+  web:
+    build:
+      context: ./qdbms-web
+      dockerfile: Dockerfile
+    container_name: qdbms-web
+    restart: unless-stopped
+    depends_on:
+      - server
+    ports:
+      - "80:80"
+
+volumes:
+  mysql-data:
+    driver: local

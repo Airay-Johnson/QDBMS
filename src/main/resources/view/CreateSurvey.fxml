@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="SurveySystem.controller.QuestionnaireController"
+            prefWidth="800" prefHeight="600">
+
+    <VBox spacing="15" padding="20"
+          AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+        <TextField fx:id="titleField" promptText="请输入问卷标题" prefWidth="760"/>
+        <TextArea fx:id="descriptionArea" promptText="请输入问卷描述（可选）" prefHeight="150" prefWidth="760"/>
+        <Button fx:id="submitBtn" text="保存问卷" onAction="#handleCreateQuestionnaire"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button fx:id="cancelBtn" text="取消" onAction="#handleCancel"
+                style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+    </VBox>
+</AnchorPane>

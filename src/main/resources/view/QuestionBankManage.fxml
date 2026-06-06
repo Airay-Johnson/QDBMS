@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="SurveySystem.controller.QuestionBankManageController">
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #8e44ad; -fx-padding: 15;">
+            <Label text="问题库管理" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="管理和复用常见问题" style="-fx-text-fill: #ddd;"/>
+        </VBox>
+    </top>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <HBox spacing="10">
+                <TextField fx:id="searchField" promptText="搜索问题关键词" prefWidth="300"/>
+                <ComboBox fx:id="typeFilter" promptText="问题类型" prefWidth="150"/>
+                <Button text="搜索" onAction="#handleSearch" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                <Button text="新增问题" onAction="#handleAdd" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+            </HBox>
+            <TableView fx:id="questionTable" prefHeight="400">
+                <columns>
+                    <TableColumn text="ID" prefWidth="60"><cellValueFactory><PropertyValueFactory property="qid"/></cellValueFactory></TableColumn>
+                    <TableColumn text="问题内容" prefWidth="400"><cellValueFactory><PropertyValueFactory property="qtext"/></cellValueFactory></TableColumn>
+                    <TableColumn text="类型" prefWidth="120"><cellValueFactory><PropertyValueFactory property="type"/></cellValueFactory></TableColumn>
+                    <TableColumn text="操作" prefWidth="150"/>
+                </columns>
+            </TableView>
+            <HBox spacing="10">
+                <Button text="添加到问卷" onAction="#handleAddToQuestionnaire" style="-fx-background-color: #2980b9; -fx-text-fill: white;"/>
+                <Button text="编辑" onAction="#handleEdit" style="-fx-background-color: #f39c12; -fx-text-fill: white;"/>
+                <Button text="删除" onAction="#handleDelete" style="-fx-background-color: #c0392b; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10;">
+            <Button text="关闭" onAction="#handleBack" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

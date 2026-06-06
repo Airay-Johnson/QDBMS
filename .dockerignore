@@ -1,0 +1,8 @@
+# Docker 构建忽略文件
+node_modules/
+target/
+data/
+.git/
+.idea/
+*.log
+.env

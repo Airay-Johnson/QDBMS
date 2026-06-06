@@ -1,0 +1,96 @@
+/* styles.css */
+.root {
+    -fx-font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+
+.question-item {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-padding: 15;
+}
+
+.button {
+    -fx-background-radius: 4;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+}
+
+#submitBtn {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+#submitBtn:hover {
+    -fx-background-color: #45a049;
+}
+
+#submitBtn:disabled {
+    -fx-background-color: #cccccc;
+    -fx-text-fill: #666666;
+}
+
+#cancelBtn {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #666666;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 4;
+}
+
+#cancelBtn:hover {
+    -fx-background-color: #e8e8e8;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #e0e0e0;
+    -fx-background-radius: 5;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: #4CAF50;
+    -fx-background-radius: 5;
+}
+
+.radio-button, .check-box {
+    -fx-font-size: 14px;
+}
+
+.text-area {
+    -fx-font-size: 14px;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-color: #dddddd;
+}
+
+.text-area:focused {
+    -fx-border-color: #4CAF50;
+}
+/* styles.css */
+.radio-button {
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+}
+
+.radio-button .radio {
+    -fx-background-color: white;
+    -fx-background-image: null;
+    -fx-border-radius: 10px;
+    -fx-padding: 3px;
+    -fx-border-color: #cccccc;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #4CAF50;
+    -fx-background-image: null;
+    -fx-border-color: #4CAF50;
+}
+
+.radio-button .dot {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+    -fx-padding: 4px;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: white;
+}

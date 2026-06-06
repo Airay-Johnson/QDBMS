@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="SurveySystem.controller.RegisterController"
+            styleClass="login-pane"
+            prefWidth="600" prefHeight="500">
+
+    <!-- 注册表单容器 -->
+    <VBox alignment="CENTER" spacing="20" layoutX="150" layoutY="80">
+        <!-- 用户名输入框 -->
+        <TextField fx:id="usernameField" promptText="请输入用户名"
+                   styleClass="input-field" prefWidth="300" prefHeight="40"/>
+
+        <!-- 邮箱输入框 -->
+        <TextField fx:id="emailField" promptText="请输入邮箱"
+                   styleClass="input-field" prefWidth="300" prefHeight="40"/>
+
+        <!-- 密码输入框 -->
+        <PasswordField fx:id="passwordField" promptText="请输入密码"
+                       styleClass="input-field" prefWidth="300" prefHeight="40"/>
+
+        <!-- 确认密码输入框 -->
+        <PasswordField fx:id="confirmPasswordField" promptText="请确认密码"
+                       styleClass="input-field" prefWidth="300" prefHeight="40"/>
+
+        <!-- 按钮容器 -->
+        <VBox alignment="CENTER" spacing="15">
+            <Button text="注册" onAction="#handleRegister"
+                    styleClass="btn-primary" prefWidth="200" prefHeight="40"/>
+
+            <Button text="返回登录" onAction="#handleBackToLogin"
+                    styleClass="btn-secondary" prefWidth="200" prefHeight="40"/>
+        </VBox>
+    </VBox>
+
+
+</AnchorPane>

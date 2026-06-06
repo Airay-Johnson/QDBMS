@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ProgressIndicator?>
+
+<?import java.lang.String?>
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="SurveySystem.controller.QuestionManageController"
+      spacing="12"
+      style="-fx-background-color: #f8f9fa;">
+
+    <padding>
+        <Insets top="16" right="16" bottom="16" left="16"/>
+    </padding>
+
+    <!-- 修改标题区域，确保有正确的 fx:id -->
+    <Label fx:id="questionnaireTitleLabel" text="问卷问题管理"
+           style="-fx-font-size: 22px;
+              -fx-font-weight: bold;
+              -fx-text-fill: #2c3e50;
+              -fx-padding: 0 0 12 0;"/>
+
+    <!-- 操作栏 -->
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Label text="选择问卷:"
+               style="-fx-text-fill: #34495e;"/>
+
+        <ComboBox fx:id="questionnaireCombo"
+                  prefWidth="280"
+                  promptText="请选择问卷..."/>
+
+        <Button text="加载问题"
+                onAction="#handleLoadQuestions"
+                styleClass="action-btn"/>
+
+        <Button text="添加问题"
+                onAction="#handleAddQuestion"
+                styleClass="primary-btn"/>
+
+        <ProgressIndicator fx:id="loadingIndicator"
+                           visible="false"
+                           HBox.hgrow="NEVER"/>
+    </HBox>
+
+    <!-- 问题表格 -->
+    <TableView fx:id="questionTable"
+               VBox.vgrow="ALWAYS"
+               style="-fx-border-color: #e0e0e0;">
+        <columns>
+            <TableColumn fx:id="idColumn"
+                         text="ID"
+                         prefWidth="60"
+                         resizable="false"/>
+
+            <TableColumn fx:id="contentColumn" text="问题内容" prefWidth="320">
+                <cellValueFactory>
+                    <PropertyValueFactory property="qtext"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="typeColumn"
+                         text="类型"
+                         prefWidth="120"/>
+
+            <TableColumn fx:id="optionsColumn"
+                         text="选项"
+                         prefWidth="240"/>
+        </columns>
+        <placeholder>
+            <Label text="暂无问题数据"
+                   style="-fx-text-fill: #7f8c8d;"/>
+        </placeholder>
+    </TableView>
+
+    <!-- 底部操作栏 -->
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button text="编辑"
+                onAction="#handleEditQuestion"
+                styleClass="secondary-btn"/>
+
+        <Button text="删除"
+                onAction="#handleDeleteQuestion"
+                styleClass="danger-btn"/>
+
+        <Button text="返回"
+                onAction="#handleBack"
+                styleClass="default-btn"/>
+    </HBox>
+
+    <!-- 样式定义 -->
+    <stylesheets>
+        <String fx:value="/styles/question_manage.css"/>
+    </stylesheets>
+</VBox>

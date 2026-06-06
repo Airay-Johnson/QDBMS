@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="SurveySystem.controller.LoginController"
+           style="-fx-background-color: linear-gradient(to bottom right, #3498db, #2c3e50);">
+
+    <!-- 主容器 -->
+    <VBox alignment="CENTER" spacing="30" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);">
+        <padding>
+            <Insets top="40" right="40" bottom="40" left="40"/>
+        </padding>
+
+        <!-- 标题区域 -->
+        <VBox alignment="CENTER" spacing="10">
+            <ImageView fitWidth="60" fitHeight="60" preserveRatio="true">
+
+            </ImageView>
+            <Label text="社会调查数据分析系统" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+            <Label text="用户登录" style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;" />
+        </VBox>
+
+        <!-- 表单区域 -->
+        <VBox spacing="20" prefWidth="320">
+            <!-- 用户选择 -->
+            <VBox spacing="5">
+                <Label text="选择已保存的用户" style="-fx-font-size: 14px; -fx-text-fill: #34495e; -fx-font-weight: bold;" />
+                <ComboBox fx:id="userSelector" promptText="-- 选择用户 --" style="-fx-font-size: 14px; -fx-background-radius: 5;" />
+            </VBox>
+
+            <!-- 用户名 -->
+            <VBox spacing="5">
+                <Label text="用户名" style="-fx-font-size: 14px; -fx-text-fill: #34495e; -fx-font-weight: bold;" />
+                <TextField fx:id="usernameField" promptText="请输入用户名" style="-fx-font-size: 14px; -fx-background-radius: 5;" />
+            </VBox>
+
+            <!-- 密码 -->
+            <VBox spacing="5">
+                <Label text="密码" style="-fx-font-size: 14px; -fx-text-fill: #34495e; -fx-font-weight: bold;" />
+                <PasswordField fx:id="passwordField" promptText="请输入密码" style="-fx-font-size: 14px; -fx-background-radius: 5;" />
+            </VBox>
+
+            <!-- 选项 -->
+            <HBox spacing="20" alignment="CENTER_LEFT">
+                <CheckBox fx:id="rememberPasswordCheckbox" text="记住密码" style="-fx-text-fill: #34495e;" />
+                <CheckBox fx:id="autoLoginCheckbox" text="自动登录" style="-fx-text-fill: #34495e;" />
+            </HBox>
+
+            <!-- 按钮区域 -->
+            <VBox spacing="10">
+                <Button text="登录" onAction="#handleLogin" defaultButton="true"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 5; -fx-pref-height: 40;" />
+
+                <HBox spacing="10" alignment="CENTER">
+                    <Button text="清除保存" onAction="#handleClearSaved"
+                            style="-fx-background-color: transparent; -fx-text-fill: #3498db; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-font-size: 13px;" />
+                    <Button text="注册账号" onAction="#handleRegister"
+                            style="-fx-background-color: transparent; -fx-text-fill: #3498db; -fx-font-size: 13px;" />
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <!-- 底部信息 -->
+        <Label text="© 2023 社会调查数据分析系统 | 版本 1.0.0" style="-fx-text-fill: #95a5a6; -fx-font-size: 12px;" />
+    </VBox>
+</StackPane>

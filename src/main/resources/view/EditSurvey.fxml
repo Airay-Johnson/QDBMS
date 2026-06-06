@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="SurveySystem.controller.QuestionnaireEditorController"
+            prefWidth="900" prefHeight="700">
+
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Label text="问卷编辑">
+                <font>
+                    <Font name="System Bold" size="20"/>
+                </font>
+            </Label>
+            <Separator/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="15">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <TextField fx:id="titleField" prefWidth="800" promptText="请输入问卷标题"/>
+                <TextArea fx:id="descriptionArea" prefWidth="800" prefHeight="100" promptText="请输入问卷描述（可选）"/>
+
+                <Separator/>
+
+                <VBox spacing="10">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="问题列表">
+                            <font>
+                                <Font name="System Bold" size="14"/>
+                            </font>
+                        </Label>
+                        <Button fx:id="addQuestionBtn" text="添加问题"
+                                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                    </HBox>
+                    <VBox fx:id="questionsContainer" spacing="10"
+                          style="-fx-border-color: #ddd; -fx-border-radius: 5;">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                    </VBox>
+                </VBox>
+
+                <CheckBox fx:id="isPublishedCheckbox" text="发布问卷（发布后可收集数据）"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Button fx:id="cancelBtn" text="取消"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            <Button fx:id="saveBtn" text="保存问卷"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

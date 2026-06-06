@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="SurveySystem.controller.PermissionManagementController" spacing="10"
+      style="-fx-padding: 10;">
+
+    <Label text="权限管理系统" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <Separator/>
+
+    <HBox spacing="10">
+        <VBox spacing="10" prefWidth="400">
+            <Label text="用户列表"/>
+            <TableView fx:id="usersTable" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="userIdColumn" text="用户ID" prefWidth="80"/>
+                    <TableColumn fx:id="usernameColumn" text="用户名" prefWidth="200"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+        <VBox spacing="10" prefWidth="300">
+            <Label text="可用角色"/>
+            <ListView fx:id="availableRolesList" prefHeight="100"/>
+            <Button fx:id="assignRoleButton" text="分配角色 →" prefWidth="120"/>
+
+            <Label text="用户角色"/>
+            <ListView fx:id="userRolesList" prefHeight="100"/>
+            <Button fx:id="removeRoleButton" text="← 移除角色" prefWidth="120"/>
+        </VBox>
+
+        <VBox spacing="10" prefWidth="300">
+            <Label text="可用权限"/>
+            <ListView fx:id="availablePermissionsList" prefHeight="100"/>
+            <Button fx:id="assignPermissionButton" text="分配权限 →" prefWidth="120"/>
+
+            <Label text="用户权限"/>
+            <ListView fx:id="userPermissionsList" prefHeight="100"/>
+            <Button fx:id="removePermissionButton" text="← 移除权限" prefWidth="120"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="关闭" onAction="#closeWindow"/>
+    </HBox>
+</VBox>

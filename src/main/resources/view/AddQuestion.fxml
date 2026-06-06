@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="SurveySystem.controller.AddQuestionController">
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #16a085; -fx-padding: 15;">
+            <Label text="添加问题" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </VBox>
+    </top>
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <HBox spacing="10">
+                <Label text="所属问卷：" prefWidth="100"/>
+                <ComboBox fx:id="questionnaireCombo" prefWidth="300"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="问题内容：" prefWidth="100"/>
+                <TextArea fx:id="questionTextArea" promptText="请输入问题内容" prefWidth="400" prefHeight="80" wrapText="true"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="问题类型：" prefWidth="100"/>
+                <ComboBox fx:id="typeCombo" prefWidth="200">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="SINGLE_CHOICE"/>
+                            <String fx:value="MULTIPLE_CHOICE"/>
+                            <String fx:value="TEXT"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+            <VBox fx:id="optionsContainer" spacing="5">
+                <Label text="选项（选择题填写，开放题可不填）："/>
+                <HBox spacing="5"><Label text="A."/><TextField fx:id="optionA" prefWidth="300"/></HBox>
+                <HBox spacing="5"><Label text="B."/><TextField fx:id="optionB" prefWidth="300"/></HBox>
+                <HBox spacing="5"><Label text="C."/><TextField fx:id="optionC" prefWidth="300"/></HBox>
+                <HBox spacing="5"><Label text="D."/><TextField fx:id="optionD" prefWidth="300"/></HBox>
+            </VBox>
+            <CheckBox fx:id="requiredCheck" text="必答题"/>
+            <HBox spacing="10">
+                <Button text="添加" onAction="#handleAdd" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+                <Button text="取消" onAction="#handleCancel" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

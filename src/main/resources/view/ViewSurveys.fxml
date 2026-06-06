@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="SurveySystem.controller.QuestionnaireController"
+            prefWidth="800" prefHeight="600">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="问卷列表" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Button text="创建新问卷" onAction="#handleCreateQuestionnaire"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="questionnaireTable" prefWidth="800" prefHeight="500">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="titleColumn" text="问卷标题" prefWidth="300"/>
+                <TableColumn fx:id="dateColumn" text="创建时间" prefWidth="150"/>
+                <TableColumn fx:id="statusColumn" text="状态" prefWidth="100"/>
+                <TableColumn fx:id="actionColumn" text="操作" prefWidth="200"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="提示：选择问卷后可进行编辑、状态切换或删除操作"/>
+        </HBox>
+    </bottom>
+</BorderPane>
