@@ -1,0 +1,1 @@
+{"command": "cd /d D:\\JetBrains\\IntelliJ IDEA 2025.1.3\\project\\QDBMS && git add -A && git commit -m \"Add GitHub Actions CI/CD — auto build Release + Docker Package\" && git push origin main 2>&1", "timeout": 60}
